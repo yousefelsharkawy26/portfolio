@@ -34,3 +34,37 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+```
+/
+├── app/                    # Next.js App Router
+│   ├── (routes)/           # Route groups
+│   │   ├── about/          # About page
+│   │   ├── blog/           # Blog listing and detail
+│   │   ├── contact/        # Contact page
+│   │   ├── projects/       # Projects listing and detail
+│   │   └── layout.tsx      # Root layout
+│   ├── globals.css         # Global styles
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Home page
+├── components/             # Reusable components
+│   ├── ui/                 # Base UI components
+│   ├── layout/             # Layout components
+│   ├── project/            # Project-specific components
+│   ├── animations/         # Animation components
+│   ├── social-links.tsx    # GitHub/LinkedIn links
+│   └── resume-download.tsx # Resume download button
+├── lib/                    # Utility functions
+│   ├── api.ts              # API client
+│   ├── theme.ts            # Theme context
+│   ├── email.ts            # Email service
+│   └── utils.ts            # Common utilities
+├── styles/                 # Additional styles
+├── types/                  # TypeScript definitions
+├── public/                 # Static assets
+│   ├── resume.pdf          # Resume file
+│   └── images/             # Placeholder images
+└── config/                 # Configuration files
+    └── social-links.json   # Social links data
+```
