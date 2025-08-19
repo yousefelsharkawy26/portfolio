@@ -1,6 +1,8 @@
 // components/ui/motion/variants.ts
 import { Variants } from 'framer-motion';
 
+const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+
 export const fadeInVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
@@ -12,8 +14,8 @@ export const fadeInUpVariants: Variants = {
     opacity: 1, 
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: "easeOut" as const,
+      duration: 0.5,
+      ease: EASE_OUT,
     }
   },
 };
@@ -24,8 +26,8 @@ export const fadeInDownVariants: Variants = {
     opacity: 1, 
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: "easeOut" as const,
+      duration: 0.5,
+      ease: EASE_OUT,
     }
   },
 };
@@ -36,8 +38,8 @@ export const fadeInLeftVariants: Variants = {
     opacity: 1, 
     x: 0,
     transition: {
-      duration: 0.6,
-      ease: "easeOut" as const,
+      duration: 0.5,
+      ease: EASE_OUT,
     }
   },
 };
@@ -48,8 +50,8 @@ export const fadeInRightVariants: Variants = {
     opacity: 1, 
     x: 0,
     transition: {
-      duration: 0.6,
-      ease: "easeOut" as const,
+      duration: 0.5,
+      ease: EASE_OUT,
     }
   },
 };
@@ -60,8 +62,8 @@ export const scaleVariants: Variants = {
     scale: 1, 
     opacity: 1,
     transition: {
-      duration: 0.5,
-      ease: "easeOut" as const,
+      duration: 0.45,
+      ease: EASE_OUT,
     }
   },
 };
@@ -71,7 +73,8 @@ export const staggerContainer: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.08,
+      delayChildren: 0.02
     }
   }
 };

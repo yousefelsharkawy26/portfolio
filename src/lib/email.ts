@@ -3,6 +3,7 @@ export interface ContactEmailData {
   name: string
   email: string
   message: string
+  subject: string
 }
 
 export interface EmailResult {

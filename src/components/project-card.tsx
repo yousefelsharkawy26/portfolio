@@ -15,9 +15,10 @@ interface Project {
 
 interface ProjectCardProps {
   project: Project;
+  priority?: boolean;
 }
 
-export const ProjectCard = ({ project }: ProjectCardProps) => {
+export const ProjectCard = ({ project, priority = false }: ProjectCardProps) => {
   return (
     <motion.div
       className="bg-gray-800 rounded-lg overflow-hidden shadow-lg group"
@@ -31,6 +32,11 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           src={project.imageUrl || '/images/placeholder.jpg'}
           alt={project.title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={priority}
+          fetchPriority={priority ? 'high' : 'auto'}
+          loading={priority ? 'eager' : 'lazy'}
+          placeholder={'empty'}
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>

@@ -6,13 +6,13 @@ export async function POST(request: Request) {
   try {
     console.log("Received contact form request", request)
 
-    const { name, email, message } = await request.json()
+    const { name, email, subject ,message } = await request.json()
 
     if (!name || !email || !message) {
       return NextResponse.json({ message: "Missing required fields" }, { status: 400 })
     }
 
-    const result = await sendContactEmail({ name, email, message })
+    const result = await sendContactEmail({ name, email, message, subject })
 
     if (!result.success) {
       return NextResponse.json({ message: "Failed to send email" }, { status: 500 })
