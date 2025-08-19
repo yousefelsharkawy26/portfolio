@@ -38,7 +38,7 @@ const projectsData: Project[] = [
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com/example',
     featured: true,
-    status: 'completed'
+    status: 'planned'
   },
   {
     id: '2',
@@ -64,7 +64,7 @@ const projectsData: Project[] = [
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com/example',
     featured: false,
-    status: 'completed'
+    status: 'planned'
   },
   {
     id: '4',
@@ -77,7 +77,7 @@ const projectsData: Project[] = [
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com/example',
     featured: false,
-    status: 'in-progress'
+    status: 'planned'
   },
   {
     id: '5',
@@ -90,7 +90,7 @@ const projectsData: Project[] = [
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com/example',
     featured: true,
-    status: 'completed'
+    status: 'planned'
   },
   {
     id: '6',
@@ -103,7 +103,7 @@ const projectsData: Project[] = [
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com/example',
     featured: true,
-    status: 'completed'
+    status: 'planned'
   }
 ];
 
