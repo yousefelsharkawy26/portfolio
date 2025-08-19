@@ -484,7 +484,7 @@ const ProjectsSection: React.FC = () => {
               Interested in working together?
             </h3>
             <p className="text-lg mb-6 opacity-90">
-              Let's discuss your project and bring your ideas to life.
+              Let&apos;s discuss your project and bring your ideas to life.
             </p>
             <motion.button
               className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300"

@@ -137,7 +137,7 @@ export default function HeroSection() {
           className="text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
         >
           Passionate about creating exceptional digital experiences through clean code,
-          innovative design, and cutting-edge technologies. Let's build something amazing together.
+          innovative design, and cutting-edge technologies. Let&apos;s build something amazing together.
         </MotionText>
 
         <MotionBox variants={itemVariants} className="flex gap-4 justify-center">

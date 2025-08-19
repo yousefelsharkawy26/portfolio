@@ -217,7 +217,7 @@ const ContactForm: React.FC = () => {
           'Content-Type': 'application/json',
         },
       })
-      .then((res) => {
+      .then(() => {
 
         // Here you would typically send the data to your backend
         console.log('Form submitted:', formData);
@@ -256,7 +256,7 @@ const ContactForm: React.FC = () => {
           Send me a message
         </h3>
         <p className="text-gray-600 dark:text-gray-300">
-          I'd love to hear from you. Send me a message and I'll respond as soon as possible.
+          I&apos;d love to hear from you. Send me a message and I&apos;ll respond as soon as possible.
         </p>
       </div>
 
@@ -432,7 +432,7 @@ const ContactForm: React.FC = () => {
               className="flex items-center gap-2 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg"
             >
               <CheckCircleIcon className="w-5 h-5" />
-              Message sent successfully! I'll get back to you soon.
+              Message sent successfully! I&apos;ll get back to you soon.
             </motion.div>
           )}
           
@@ -476,8 +476,8 @@ const ContactSection: React.FC = () => {
             Get In <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">Touch</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
-            Have a project in mind? Let's discuss your ideas and bring them to life. 
-            I'm always excited to work on new challenges and creative solutions.
+            Have a project in mind? Let&apos;s discuss your ideas and bring them to life. 
+            I&apos;m always excited to work on new challenges and creative solutions.
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
         </motion.div>

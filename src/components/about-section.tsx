@@ -4,26 +4,8 @@
 import { MotionBox } from '@/components/ui/motion/motion-box';
 import { MotionImage } from '@/components/ui/motion/motion-image';
 import { AcademicCapIcon, BriefcaseIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
 
 export default function AboutSection() {
-  const timelineItems = [
-    {
-      year: "2021 - Present",
-      title: "Full-Stack Developer",
-      description: "Developing web applications using .NET, Node.js, and React. Working on POS systems and healthcare software."
-    },
-    {
-      year: "2020 - 2021",
-      title: "Junior Developer",
-      description: "Started career focusing on front-end development with React and TypeScript."
-    },
-    {
-      year: "2019 - 2020",
-      title: "Intern Developer",
-      description: "Gained experience with web technologies and software development practices."
-    }
-  ];
 
   const stats = [
     { label: "Years Experience", value: "3+", icon: BriefcaseIcon },
@@ -77,14 +59,14 @@ export default function AboutSection() {
           className="space-y-6"
         >
           <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            I'm a passionate Full Stack Developer with over 3 years of experience 
+            I&apos;m a passionate Full Stack Developer with over 3 years of experience 
             creating modern, responsive web applications. I specialize in React, 
             Next.js, and Node.js, with a strong focus on user experience and 
             performance optimization.
           </p>
           
           <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            When I'm not coding, you'll find me exploring new technologies, 
+            When I&apos;m not coding, you&apos;ll find me exploring new technologies, 
             contributing to open-source projects, or sharing knowledge with 
             the developer community.
           </p>
