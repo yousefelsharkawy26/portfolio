@@ -60,6 +60,8 @@ const Header: React.FC = () => {
 
   // Smooth scroll to section
   const scrollToSection = (href: string, offset: number) => {
+    setIsMenuOpen(false);
+
     const element = document.getElementById(href.replace('#', ''));
     if (element) {
       const elementPosition = element.getBoundingClientRect().top;
@@ -70,7 +72,6 @@ const Header: React.FC = () => {
         behavior: 'smooth'
       });
     }
-    setIsMenuOpen(false);
   };
 
   // Toggle theme
@@ -189,9 +190,9 @@ const Header: React.FC = () => {
             >
               <div className="py-4 space-y-2">
                 {navigationItems.map((item, index) => (
-                  <motion.button
+                  <motion.a
                     key={item.name}
-                    onClick={() => scrollToSection(item.href, item.offset)}
+                    href={item.href}
                     className={`block w-full text-left px-4 py-3 text-base font-medium transition-colors duration-300 ${
                       activeSection === item.name.toLowerCase()
                         ? 'text-blue-500 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
@@ -202,7 +203,7 @@ const Header: React.FC = () => {
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
                     {item.name}
-                  </motion.button>
+                  </motion.a>
                 ))}
                 
                 {/* Mobile Resume Download */}

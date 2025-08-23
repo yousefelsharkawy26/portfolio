@@ -9,6 +9,7 @@ import { MotionButton } from '@/components/ui/motion/motion-button';
 import { MotionImage } from '@/components/ui/motion/motion-image';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { TypeAnimation } from 'react-type-animation';
+import { MotionLink } from './ui/motion/motion-link';
 
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -60,7 +61,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
+    <section className="min-h-screen flex items-center overflow-hidden justify-center relative bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
              id="home">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
@@ -119,6 +120,8 @@ export default function HeroSection() {
             sequence={[
               'Full Stack Developer',
               2000,
+              'Backend DotNet Core Expert',
+              2000,
               'React Specialist',
               2000,
               'Next.js Expert',
@@ -159,13 +162,14 @@ export default function HeroSection() {
       </MotionBox>
 
       {/* Scroll Indicator */}
-      <MotionBox
+      <MotionLink
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
+        href="#about"
       >
         <ChevronDownIcon className="w-8 h-8 text-white/60" />
-      </MotionBox>
+      </MotionLink>
     </section>
   );
 }

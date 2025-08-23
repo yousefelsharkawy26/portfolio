@@ -3,7 +3,8 @@
 
 import { MotionBox } from '@/components/ui/motion/motion-box';
 import { MotionImage } from '@/components/ui/motion/motion-image';
-import { AcademicCapIcon, BriefcaseIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
+import { AcademicCapIcon, BriefcaseIcon, ChevronDownIcon, CodeBracketIcon } from '@heroicons/react/24/outline';
+import { MotionLink } from './ui/motion/motion-link';
 
 export default function AboutSection() {
 
@@ -13,7 +14,7 @@ export default function AboutSection() {
     { label: "Technologies", value: "15+", icon: AcademicCapIcon },
   ];
   return ( 
-  <section className="py-20 bg-slate-50 dark:bg-slate-800"
+  <section className="py-20 bg-slate-50 dark:bg-slate-800 relative"
             id='about'>
     <div className="container mx-auto px-4">
       <MotionBox
@@ -95,6 +96,15 @@ export default function AboutSection() {
         </MotionBox>
       </div>
     </div>
+    {/* Scroll Indicator */}
+    <MotionLink
+      className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      animate={{ y: [0, 10, 0] }}
+      transition={{ repeat: Infinity, duration: 2 }}
+      href="#skills"
+    >
+      <ChevronDownIcon className="w-8 h-8 text-white/60" />
+    </MotionLink>
   </section>
 );
 };

@@ -1,101 +1,17 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  EnvelopeIcon,
-  PhoneIcon,
-  MapPinIcon,
-  PaperAirplaneIcon,
-  CheckCircleIcon,
-  ExclamationCircleIcon,
-  ClockIcon
-} from '@heroicons/react/24/outline';
-import { 
-  LinkedinIcon,
-  GithubIcon,
-  TwitterIcon,
-  InstagramIcon
-} from 'lucide-react';
+import { DynamicHeroIcon } from './ui/dynamic_icons';
 import axios from 'axios';
+import { ContactInfo, FormData, FormErrors, SocialLink } from '@/lib/types';
+import { CheckCircleIcon, ExclamationCircleIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import DynamicLucideIcon, { IconName } from './ui/lucide-dynamic';
 
 // Form validation types
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-}
-
-// Contact information data
-const contactInfo = [
-  {
-    icon: EnvelopeIcon,
-    title: 'Email',
-    details: 'anayousef1112@gmail.com',
-    link: 'anayousef1112@gmail.com',
-    color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    icon: PhoneIcon,
-    title: 'Phone',
-    details: '+20 101 926 7592',
-    link: 'tel:+201019267592',
-    color: 'from-green-500 to-emerald-500'
-  },
-  {
-    icon: MapPinIcon,
-    title: 'Location',
-    details: 'Cairo, Egypt',
-    link: 'https://maps.app.goo.gl/CaR6v28eV4P8TM9w8',
-    color: 'from-purple-500 to-pink-500'
-  },
-  {
-    icon: ClockIcon,
-    title: 'Response Time',
-    details: 'Within 8 hours',
-    link: '',
-    color: 'from-orange-500 to-red-500'
-  }
-];
-
-// Social media links
-const socialLinks = [
-  {
-    name: 'LinkedIn',
-    icon: LinkedinIcon,
-    url: 'https://www.linkedin.com/in/yousefelsharkawy984',
-    color: 'hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20'
-  },
-  {
-    name: 'GitHub',
-    icon: GithubIcon,
-    url: 'https://github.com/yousefelsharkawy26',
-    color: 'hover:text-gray-900 hover:bg-gray-50 dark:hover:bg-gray-700'
-  },
-  {
-    name: 'Twitter',
-    icon: TwitterIcon,
-    url: 'https://x.com/yousefelshar',
-    color: 'hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20'
-  },
-  {
-    name: 'Instagram',
-    icon: InstagramIcon,
-    url: 'https://instagram.com/el_sh2rkawy',
-    color: 'hover:text-pink-600 hover:bg-pink-50 dark:hover:bg-pink-900/20'
-  }
-];
 
 // Contact Info Card Component
-const ContactInfoCard: React.FC<{ info: typeof contactInfo[0]; index: number }> = ({ info, index }) => {
+const ContactInfoCard: React.FC<{ info: ContactInfo; index: number }> = ({ info, index }) => {
   const IconComponent = info.icon;
   
   return (
@@ -114,7 +30,7 @@ const ContactInfoCard: React.FC<{ info: typeof contactInfo[0]; index: number }> 
         
         {/* Icon */}
         <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${info.color} text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
-          <IconComponent className="w-6 h-6" />
+          <DynamicHeroIcon name={IconComponent} className="w-6 h-6" />
         </div>
         
         {/* Content */}
@@ -212,7 +128,7 @@ const ContactForm: React.FC = () => {
     
       // Simulate API call
       await axios
-      .post('/api/contact', formData,{
+      .post('/api/contact/send-email', formData,{
         headers: {
           'Content-Type': 'application/json',
         },
@@ -455,6 +371,36 @@ const ContactForm: React.FC = () => {
 
 // Main Contact Section Component
 const ContactSection: React.FC = () => {
+  const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
+  const [contactInfo, setContactInfo] = useState<ContactInfo[]>([]);
+
+  // Contact information data
+  useEffect(() => {
+    const fetchSocialLinks = async () => {
+      try {
+        const response = await fetch('/api/contact/social-links');
+        const data = await response.json();
+        setSocialLinks(data);
+      } catch (error) {
+        console.error('Error fetching contact info:', error);
+        setSocialLinks([]);
+      }
+    };
+    
+    const fetchContactInfo = async () => {
+      try {
+        const response = await fetch('/api/contact');
+        const data = await response.json();
+        setContactInfo(data);
+      } catch (error) {
+        console.error('Error fetching contact info:', error);
+        setContactInfo([]);
+      }
+    }
+    fetchSocialLinks();
+    fetchContactInfo();
+  }, []);
+
   return (
     <section className="py-20 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
       {/* Background Elements */}
@@ -505,7 +451,8 @@ const ContactSection: React.FC = () => {
               </h3>
               <div className="flex gap-4">
                 {socialLinks.map((social, index) => {
-                  const IconComponent = social.icon;
+                  const IconComponent = social.icon as IconName;
+                  
                   return (
                     <motion.a
                       key={social.name}
@@ -520,7 +467,7 @@ const ContactSection: React.FC = () => {
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                     >
-                      <IconComponent className="w-6 h-6" />
+                      <DynamicLucideIcon name={IconComponent} className="w-6 h-6" />
                     </motion.a>
                   );
                 })}

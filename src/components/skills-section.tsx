@@ -1,48 +1,40 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { MotionBox } from "./ui/motion/motion-box";
+import { CategorySkills } from "@/lib/types";
+import { MotionLink } from "./ui/motion/motion-link";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const SkillsSection = () => {
-    const skillCategories = [
-      {
-        title: "Frontend",
-        skills: [
-          { name: "HTML", level: 90 },
-          { name: "CSS", level: 85 },
-          { name: "JavaScript", level: 90 },
-          { name: "React JS", level: 95 },
-          { name: "Next JS", level: 90 },
-          { name: "TypeScript", level: 85 },
-          { name: "Tailwind CSS", level: 90 },
-        ]
-      },
-      {
-        title: "Backend",
-        skills: [
-          { name: "ASP.Net ( MVC | API)", level: 90 },
-          { name: "Next JS API", level: 85 },
-          { name: "Express JS", level: 80 },
-        ]
-      },
-      {
-        title: "Database",
-        skills: [
-          { name: "SQL Server", level: 90 },
-          { name: "PostgreSQL", level: 70 },
-          { name: "MongoDB", level: 75 },
-        ]
-      },
-      {
-        title: "Tools & Others",
-        skills: [
-          { name: "Git", level: 90 },
-          { name: "Docker", level: 70 },
-        ]
-      }
-    ];
+  const [skillCategories, setSkillCategories] = useState<CategorySkills[]>();
   
+  // Fetch skills data from the API
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await fetch('/api/category-skills');
+        if (!response.ok) {
+          throw new Error('Failed to fetch skills');
+        }
+        const data = await response.json();
+        setSkillCategories(data);
+      } catch (error) {
+        console.error("Error fetching skills:", error);
+      }
+    };
+    fetchSkills();
+  }, []);
+  if (!skillCategories) {
+    return <div>Loading...</div>;
+  }
+  if (skillCategories.length === 0) {
+    return <div>No skills available</div>;
+  }
+
+
     return (
-      <section className="py-20 bg-white dark:bg-slate-900"
+      <section className="py-20 bg-white dark:bg-slate-900 overflow-hidden relative"
                id="skills">
         <div className="container mx-auto px-4">
           <MotionBox
@@ -99,6 +91,15 @@ const SkillsSection = () => {
             ))}
           </div>
         </div>
+        {/* Scroll Indicator */}
+        <MotionLink
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          href="#projects"
+        >
+          <ChevronDownIcon className="w-8 h-8 text-white/60" />
+        </MotionLink>
       </section>
     );
   };

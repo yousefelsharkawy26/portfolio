@@ -1,26 +1,35 @@
 // app/api/contact/route.ts
 import { NextResponse } from "next/server"
-import { sendContactEmail } from "@/lib/email"
+import { sql } from "@/lib/dbcontext"
 
-export async function POST(request: Request) {
+export const GET = async () => {
   try {
-    console.log("Received contact form request", request)
+    const contact = await sql`SELECT * FROM contact_info`
+    return NextResponse.json(contact)
+  } catch (error) {
+    console.error("Error fetching categories:", error)
+    return NextResponse.json({ error: "Failed to fetch categories" }, { status: 500 })
+  }
+}
 
-    const { name, email, subject ,message } = await request.json()
+export const POST = async (request: Request) => {
+  try {
+    const { icon, title, details, link, color } = await request.json()
 
-    if (!name || !email || !message) {
+    if (!icon || !title || !details) {
       return NextResponse.json({ message: "Missing required fields" }, { status: 400 })
     }
 
-    const result = await sendContactEmail({ name, email, message, subject })
+    const newContact = await sql`INSERT INTO contact_info (icon, title, details, link, color) 
+                                 VALUES (${icon}, ${title}, ${details}, ${link}, ${color}) 
+                                 RETURNING *`
 
-    if (!result.success) {
-      return NextResponse.json({ message: "Failed to send email" }, { status: 500 })
-    }
-
-    return NextResponse.json({ success: true })
+    return NextResponse.json(newContact[0], { status: 201 })
   } catch (error) {
-    console.error("Contact API error:", error)
+    console.error("Error creating contact:", error);
     return NextResponse.json({ message: "Internal server error" }, { status: 500 })
   }
 }
+
+
+

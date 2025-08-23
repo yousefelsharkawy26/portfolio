@@ -42,14 +42,14 @@ export default function RootLayout({
     <html lang="en" className="" data-scroll-behavior="smooth">
       <body className={inter.className + ' antialiased'} suppressHydrationWarning={true}>
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-gray-800 focus:text-white focus:px-3 focus:py-2">Skip to content</a>
-        <ThemeProvider>
-          <PageTransition>
-            <main id="main">
-              {children}
-            </main>
-            <Analytics />
-          </PageTransition>
-        </ThemeProvider>
+          <ThemeProvider>
+            <PageTransition>
+              <main id="main">
+                {children}
+              </main>
+              <Analytics />
+            </PageTransition>
+          </ThemeProvider>
       </body>
     </html>
   );
