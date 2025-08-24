@@ -32,14 +32,15 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSave, onCancel, initialData
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // if initialData exists, we're editing, otherwise adding new
     if (initialData) {
       // update on server
-      axios.put(`/api/contact/${formData.id}`, formData)
+      await axios.put(`/api/contact/${formData.id}`, formData)
         .then(response => {
           console.log('Contact updated:', response.data);
+          onSave(response.data);
         })
         .catch(error => {
           console.error('There was an error updating the contact!', error);
@@ -47,15 +48,15 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSave, onCancel, initialData
     }
     else {
       // add new to server
-      axios.post('/api/contact', formData)
+      await axios.post('/api/contact', formData)
         .then(response => {
           console.log('Contact added:', response.data);
+          onSave(response.data);
         })
         .catch(error => {
           console.error('There was an error adding the contact!', error);
         });
     }
-    onSave(formData);
   };
 
   return (

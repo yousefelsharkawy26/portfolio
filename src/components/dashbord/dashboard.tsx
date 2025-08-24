@@ -126,22 +126,22 @@ const Dashboard = () => {
   switch (activeTab) {
     case 'contacts':
       if (isContactInfo(formData)) {
-        setContacts([...contacts, { ...formData, id: Date.now() }]);
+        setContacts([...contacts, formData]);
       }
       break;
     case 'social':
       if (isSocialLink(formData)) {
-        setSocialLinks([...socialLinks, { ...formData, id: Date.now() }]);
+        setSocialLinks([...socialLinks, formData]);
       }
       break;
     case 'projects':
       if (isProject(formData)) {
-        setProjects([...projects, { ...formData, id: crypto.randomUUID() }]);
+        setProjects([...projects, formData]);
       }
       break;
     case 'skills':
       if (isSkill(formData)) {
-        setSkills([...skills, { ...formData, id: Date.now() }]);
+        setSkills([...skills, formData]);
       }
       break;
   }
@@ -178,12 +178,15 @@ const Dashboard = () => {
         setContacts(contacts.filter(c => c.id !== id));
         break;
       case 'social':
+        await axios.delete(`/api/contact/social-links/${id}`);
         setSocialLinks(socialLinks.filter(s => s.id !== id));
         break;
       case 'projects':
+        await axios.delete(`/api/projects/${id}`);
         setProjects(projects.filter(p => p.id !== id));
         break;
       case 'skills':
+        await axios.delete(`/api/category-skills/skills/${id}`);
         setSkills(skills.filter(s => s.id !== id));
         break;
     }

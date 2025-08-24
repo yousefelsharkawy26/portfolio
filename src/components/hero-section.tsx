@@ -18,6 +18,20 @@ export default function HeroSection() {
     Array.from({ length: 20 }, () => ({ left: 50, top: 50 }))
   );
 
+  const scrollToSection = (href: string, offset: number) => {
+
+    const element = document.getElementById(href.replace('#', ''));
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset + offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -148,6 +162,7 @@ export default function HeroSection() {
             className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => scrollToSection("#projects", -80)}
           >
             View My Work
           </MotionButton>
@@ -155,6 +170,7 @@ export default function HeroSection() {
             className="px-8 py-3 border border-white/20 text-white rounded-full font-semibold backdrop-blur-sm hover:bg-white/10 transition-all duration-300"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => scrollToSection("#contact", -80)}
           >
             Contact Me
           </MotionButton>

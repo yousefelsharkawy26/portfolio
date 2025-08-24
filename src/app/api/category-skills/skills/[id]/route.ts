@@ -13,9 +13,9 @@ export async function PUT(
     const { id } = paramsData;
     
 
-    const { icon, title, details, link, color } = await request.json()
+    const { name, level, category_id } = await request.json()
 
-    if (!id || !icon || !title || !details) {
+    if (!id || !name || !level || !category_id || category_id <= 0) {
       return NextResponse.json(
         { message: "Missing required fields" },
         { status: 400 }
@@ -23,12 +23,10 @@ export async function PUT(
     }
 
     const updatedContact = await sql`
-      UPDATE contact_info 
-      SET icon = ${icon}, 
-          title = ${title}, 
-          details = ${details}, 
-          link = ${link}, 
-          color = ${color} 
+      UPDATE skills 
+      SET name = ${name}, 
+          level = ${level}, 
+          category_id = ${category_id}, 
       WHERE id = ${id} 
       RETURNING *
     `
@@ -51,7 +49,7 @@ export const DELETE = async (request: Request, { params }: { params: Params}) =>
       return NextResponse.json({ message: "Missing required fields" }, { status: 400 })
     }
 
-    await sql`DELETE FROM contact_info WHERE id = ${id}`
+    await sql`DELETE FROM skills WHERE id = ${id}`
 
     return NextResponse.json({ success: true })
   } catch (error) {

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Save, X } from 'lucide-react';
 import { Skill, SkillCategory } from '@/lib/types';
+import axios from 'axios';
 
 interface SkillFormProps {
   onSave: (data: Skill) => void;
@@ -30,9 +31,31 @@ const SkillForm: React.FC<SkillFormProps> = ({ onSave, onCancel, initialData, sk
     setFormData({ ...formData, [name]: name === 'level' || name === 'category_id' ? Number(value) : value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(formData);
+    // if initialData exists, we're editing, otherwise adding new
+    if (initialData) {
+      // update on server
+      await axios.put(`/api/skills/${formData.id}`, formData)
+        .then(response => {
+          console.log('Contact updated:', response.data);
+          onSave(response.data);
+        })
+        .catch(error => {
+          console.error('There was an error updating the contact!', error);
+        });
+    }
+    else {
+      // add new to server
+      await axios.post('/api/skills', formData)
+        .then(response => {
+          console.log('Contact added:', response.data);
+          onSave(response.data);
+        })
+        .catch(error => {
+          console.error('There was an error adding the contact!', error);
+        });
+    }
   };
 
   return (
