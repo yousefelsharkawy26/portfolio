@@ -87,7 +87,7 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ onSave, onCancel, initialData
       </label>
       <label className="block mb-4">
         <span className="text-gray-300">Long Description</span>
-        <textarea name="description" value={formData.long_description} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3"></textarea>
+        <textarea name="long_description" value={formData.long_description} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3"></textarea>
       </label>
       <label className="block mb-4">
         <span className="text-gray-300">Technologies (seperate by comma)</span>
