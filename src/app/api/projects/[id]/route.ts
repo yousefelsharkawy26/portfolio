@@ -23,16 +23,19 @@ export const PUT = async (request: Request, { params }: { params: Params }) => {
             status 
         } = await request.json();
 
+        console.log(long_description);
+        
+
         const query = await sql`Update projects
                                 Set title=${title},
-                                    description=${description}
-                                    long_description=${long_description}
-                                    image=${image}
-                                    technologies=${technologies}
-                                    category=${category}
-                                    live_url=${live_url}
-                                    github_url=${github_url}
-                                    featured=${featured}
+                                    description=${description},
+                                    long_description=${long_description},
+                                    image=${image},
+                                    technologies=${technologies},
+                                    category=${category},
+                                    live_url=${live_url},
+                                    github_url=${github_url},
+                                    featured=${featured},
                                     status=${status}
                                 Where id=${id}
                                 RETURNING *
