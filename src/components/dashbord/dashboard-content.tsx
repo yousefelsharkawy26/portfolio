@@ -9,10 +9,10 @@ import { ContactInfo, SocialLink, Project, Skill, SkillCategory, FormDataType } 
 
 // Assuming 'tabs' and 'icons' are defined somewhere or passed as props
 const tabs = [
-    { id: 'contacts', label: 'معلومات الاتصال', color: 'from-blue-500 to-blue-600' },
-    { id: 'social', label: 'الروابط الاجتماعية', color: 'from-purple-500 to-purple-600' },
-    { id: 'projects', label: 'المشاريع', color: 'from-green-500 to-green-600' },
-    { id: 'skills', label: 'المهارات', color: 'from-orange-500 to-orange-600' }
+    { id: 'contacts', label: 'Contact information', color: 'from-blue-500 to-blue-600' },
+    { id: 'social', label: 'Social links', color: 'from-purple-500 to-purple-600' },
+    { id: 'projects', label: 'Projects', color: 'from-green-500 to-green-600' },
+    { id: 'skills', label: 'Skills', color: 'from-orange-500 to-orange-600' }
 ];
 
 // Type guards
@@ -51,8 +51,8 @@ const DashboardContent: React.FC<DashboardContentProps> = ({ activeTab, data, se
           <div className="bg-gray-800 rounded-full p-8 w-32 h-32 mx-auto mb-6 flex items-center justify-center">
             <Search className="w-12 h-12 text-gray-500" />
           </div>
-          <h3 className="text-xl font-semibold mb-2">لا توجد نتائج</h3>
-          <p className="text-gray-400 mb-6">لم يتم العثور على عناصر تطابق بحثك</p>
+          <h3 className="text-xl font-semibold mb-2">No results found</h3>
+          <p className="text-gray-400 mb-6">No items were found that match your search.</p>
         </div>
       );
     }
@@ -98,7 +98,7 @@ const DashboardContent: React.FC<DashboardContentProps> = ({ activeTab, data, se
           </div>
           <div>
             <h2 className="text-2xl font-bold text-gray-100">{tabs.find(t => t.id === activeTab)?.label}</h2>
-            <p className="text-gray-400">إدارة وتنظيم {tabs.find(t => t.id === activeTab)?.label} بطريقة احترافية</p>
+            <p className="text-gray-400">Management and organization {tabs.find(t => t.id === activeTab)?.label} In a professional manner</p>
           </div>
         </div>
       </div>

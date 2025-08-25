@@ -48,7 +48,7 @@ const ContactCard: React.FC<ContactCardProps> = ({ contact, onEdit, onDelete }) 
             className="inline-flex items-center space-x-2 text-blue-400 hover:text-blue-200 text-sm font-medium bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-lg transition-all"
           >
             <ExternalLink className="w-3 h-3" />
-            <span>فتح الرابط</span>
+            <span>Visit</span>
           </a>
         )}
       </div>

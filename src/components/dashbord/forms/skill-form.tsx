@@ -61,17 +61,17 @@ const SkillForm: React.FC<SkillFormProps> = ({ onSave, onCancel, initialData, sk
   return (
     <form onSubmit={handleSubmit}>
       <label className="block mb-4">
-        <span className="text-gray-300">اسم المهارة</span>
+        <span className="text-gray-300">Skill Name</span>
         <input type="text" name="name" value={formData.name} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3" />
       </label>
       <label className="block mb-4">
-        <span className="text-gray-300">مستوى الإتقان (1-100)</span>
+        <span className="text-gray-300">The Level (1-100)</span>
         <input type="number" name="level" value={formData.level} onChange={handleChange} min="1" max="100" required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3" />
       </label>
       <label className="block mb-4">
-        <span className="text-gray-300">الفئة</span>
+        <span className="text-gray-300">Category</span>
         <select name="category_id" value={formData.category_id} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3">
-          <option value="">اختر فئة</option>
+          <option value="">Choose category...</option>
           {skillCategories.map(cat => (
             <option key={cat.id} value={cat.id}>{cat.title}</option>
           ))}
@@ -83,13 +83,13 @@ const SkillForm: React.FC<SkillFormProps> = ({ onSave, onCancel, initialData, sk
           onClick={onCancel}
           className="bg-gray-700 text-gray-300 px-6 py-3 rounded-2xl hover:bg-gray-600 transition-all font-medium"
         >
-          <span className="flex items-center space-x-2"><X className="w-5 h-5" /> إلغاء</span>
+          <span className="flex items-center space-x-2"><X className="w-5 h-5" /> Cancel</span>
         </button>
         <button
           type="submit"
           className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all font-medium"
         >
-          <span className="flex items-center space-x-2"><Save className="w-5 h-5" /> {initialData ? 'تحديث' : 'حفظ'}</span>
+          <span className="flex items-center space-x-2"><Save className="w-5 h-5" /> {initialData ? 'Update' : 'Save'}</span>
         </button>
       </div>
     </form>

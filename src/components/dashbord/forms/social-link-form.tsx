@@ -17,7 +17,7 @@ const SocialLinkForm: React.FC<SocialLinkFormProps> = ({ onSave, onCancel, initi
     name: '',
     url: '',
     icon: '',
-    color: '#0077b5',
+    color: '',
   });
 
   useEffect(() => {
@@ -61,19 +61,19 @@ const SocialLinkForm: React.FC<SocialLinkFormProps> = ({ onSave, onCancel, initi
   return (
     <form onSubmit={handleSubmit}>
       <label className="block mb-4">
-        <span className="text-gray-300">اسم المنصة</span>
+        <span className="text-gray-300">Platform Name</span>
         <input type="text" name="name" value={formData.name} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring focus:ring-blue-500 focus:border-blue-500 transition-all" />
       </label>
       <label className="block mb-4">
-        <span className="text-gray-300">الرابط</span>
+        <span className="text-gray-300">The URL</span>
         <input type="url" name="url" value={formData.url} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring focus:ring-blue-500 focus:border-blue-500 transition-all" />
       </label>
       <label className="block mb-4">
-        <span className="text-gray-300">أيقونة</span>
+        <span className="text-gray-300">Icon Name</span>
         <input type="text" name="icon" value={formData.icon} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring focus:ring-blue-500 focus:border-blue-500 transition-all" />
       </label>
       <label className="block mb-4">
-        <span className="text-gray-300">اللون (#hex)</span>
+        <span className="text-gray-300">Color (tailwind classes)</span>
         <input type="text" name="color" value={formData.color} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring focus:ring-blue-500 focus:border-blue-500 transition-all" />
       </label>
       <div className="flex justify-end space-x-4 mt-6">
@@ -82,13 +82,13 @@ const SocialLinkForm: React.FC<SocialLinkFormProps> = ({ onSave, onCancel, initi
           onClick={onCancel}
           className="bg-gray-700 text-gray-300 px-6 py-3 rounded-2xl hover:bg-gray-600 transition-all font-medium"
         >
-          <span className="flex items-center space-x-2"><X className="w-5 h-5" /> إلغاء</span>
+          <span className="flex items-center space-x-2"><X className="w-5 h-5" /> Cancel</span>
         </button>
         <button
           type="submit"
           className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all font-medium"
         >
-          <span className="flex items-center space-x-2"><Save className="w-5 h-5" /> {initialData ? 'تحديث' : 'حفظ'}</span>
+          <span className="flex items-center space-x-2"><Save className="w-5 h-5" /> {initialData ? 'Update' : 'Save'}</span>
         </button>
       </div>
     </form>

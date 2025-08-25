@@ -18,7 +18,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSave, onCancel, initialData
     title: '',
     details: '',
     link: '',
-    color: '#3b82f6',
+    color: '',
   });
 
   useEffect(() => {
@@ -62,23 +62,23 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSave, onCancel, initialData
   return (
     <form onSubmit={handleSubmit}>
       <label className="block mb-4">
-        <span className="text-gray-300">العنوان</span>
+        <span className="text-gray-300">Address</span>
         <input type="text" name="title" value={formData.title} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring focus:ring-blue-500 focus:border-blue-500 transition-all" />
       </label>
       <label className="block mb-4">
-        <span className="text-gray-300">التفاصيل</span>
+        <span className="text-gray-300">Details</span>
         <input type="text" name="details" value={formData.details} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring focus:ring-blue-500 focus:border-blue-500 transition-all" />
       </label>
       <label className="block mb-4">
-        <span className="text-gray-300">الرابط</span>
+        <span className="text-gray-300">Url</span>
         <input type="url" name="link" value={formData.link || ''} onChange={handleChange} className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring focus:ring-blue-500 focus:border-blue-500 transition-all" />
       </label>
       <label className="block mb-4">
-        <span className="text-gray-300">أيقونة</span>
+        <span className="text-gray-300">Icon name</span>
         <input type="text" name="icon" value={formData.icon} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring focus:ring-blue-500 focus:border-blue-500 transition-all" />
       </label>
       <label className="block mb-4">
-        <span className="text-gray-300">اللون (#hex)</span>
+        <span className="text-gray-300">Color (tailwind classes)</span>
         <input type="text" name="color" value={formData.color} onChange={handleChange} required className="mt-1 block w-full bg-gray-700 text-white border border-gray-600 rounded-lg p-3 focus:ring focus:ring-blue-500 focus:border-blue-500 transition-all" />
       </label>
       <div className="flex justify-end space-x-4 mt-6">
@@ -87,13 +87,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSave, onCancel, initialData
           onClick={onCancel}
           className="bg-gray-700 text-gray-300 px-6 py-3 rounded-2xl hover:bg-gray-600 transition-all font-medium"
         >
-          <span className="flex items-center space-x-2"><X className="w-5 h-5" /> إلغاء</span>
+          <span className="flex items-center space-x-2"><X className="w-5 h-5" /> Cancel</span>
         </button>
         <button
           type="submit"
           className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all font-medium"
         >
-          <span className="flex items-center space-x-2"><Save className="w-5 h-5" /> {initialData ? 'تحديث' : 'حفظ'}</span>
+          <span className="flex items-center space-x-2"><Save className="w-5 h-5" /> {initialData ? 'Update' : 'Save'}</span>
         </button>
       </div>
     </form>

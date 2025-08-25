@@ -22,7 +22,9 @@ const SocialLinkCard: React.FC<SocialLinkCardProps> = ({ social, onEdit, onDelet
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-bold text-gray-100 text-lg mb-1">{social.name}</h3>
-              <p className="text-gray-400 text-sm truncate">{social.url}</p>
+              <p className="text-gray-400 text-sm truncate"
+                 style={{ textWrap: 'wrap', width: '50%' }}
+              >{social.url}</p>
             </div>
           </div>
           <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -47,7 +49,7 @@ const SocialLinkCard: React.FC<SocialLinkCardProps> = ({ social, onEdit, onDelet
           className="inline-flex items-center space-x-2 text-purple-400 hover:text-purple-200 text-sm font-medium bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-lg transition-all"
         >
           <ExternalLink className="w-3 h-3" />
-          <span>زيارة الرابط</span>
+          <span>Visit</span>
         </a>
       </div>
     </div>

@@ -171,7 +171,7 @@ const Dashboard = () => {
   };
 
   const handleDelete = async (id: number | string) => {
-    if (!confirm('هل أنت متأكد من حذف هذا العنصر؟')) return;
+    if (!confirm('Are you sure for delete this item ?')) return;
     switch (activeTab) {
       case 'contacts':
         await axios.delete(`/api/contact/${id}`);

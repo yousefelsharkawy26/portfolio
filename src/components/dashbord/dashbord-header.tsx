@@ -24,23 +24,23 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ activeTab, tabs, setA
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
-            Database Management Dashboard
+            Dashboard Manager
           </h1>
-          <p className="text-gray-400 text-lg">إدارة شاملة ومتقدمة لقاعدة البيانات مع واجهة عصرية وسهلة الاستخدام</p>
+          <p className="text-gray-400 text-lg">Comprehensive and advanced database management with an easy-to-use interface</p>
         </div>
         <button
           onClick={() => setShowAddForm(true)}
           className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all duration-200 font-medium flex items-center space-x-3 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
         >
           <Plus className="w-6 h-6" />
-          <span>إضافة عنصر جديد</span>
+          <span>Add a new item</span>
         </button>
       </div>
       <div className="relative mb-8">
         <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-6 h-6" />
         <input
           type="text"
-          placeholder="ابحث في جميع البيانات..."
+          placeholder="Search all data..."
           className="w-full pr-14 pl-6 py-4 bg-gray-700 border border-gray-600 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-lg text-white placeholder-gray-400"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}

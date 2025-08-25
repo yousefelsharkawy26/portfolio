@@ -42,7 +42,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, onEdit, onDelete, skillCat
         </div>
         <div className="mb-3">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium text-gray-300">مستوى الإتقان</span>
+            <span className="text-sm font-medium text-gray-300">Mastering level</span>
             <span className="text-lg font-bold text-orange-400">{skill.level}%</span>
           </div>
           <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
@@ -52,8 +52,8 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, onEdit, onDelete, skillCat
             ></div>
           </div>
           <div className="flex justify-between text-xs text-gray-500 mt-1">
-            <span>مبتدئ</span>
-            <span>متقدم</span>
+            <span>Beginner</span>
+            <span>advanced</span>
           </div>
         </div>
       </div>
