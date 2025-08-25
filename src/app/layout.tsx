@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/lib/theme';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 import { PageTransition } from '@/components/animations/page-transition';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -45,6 +45,7 @@ export default function RootLayout({
       <body className={inter.className + ' antialiased'} suppressHydrationWarning={true}>
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-gray-800 focus:text-white focus:px-3 focus:py-2">Skip to content</a>
           <SpeedInsights/>
+          <Analytics />
           <ThemeProvider>
             <PageTransition>
               <main id="main">
